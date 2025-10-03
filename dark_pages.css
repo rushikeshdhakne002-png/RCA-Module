@@ -1,0 +1,45 @@
+/* Force full-page dark background for Issue Log & Manage Issues */
+[data-testid="stAppViewContainer"] {
+  background-color: #0b1220 !important;
+  color: #f8fafc !important;
+}
+/* Text colors */
+[data-testid="stAppViewContainer"] .stMarkdown,
+[data-testid="stAppViewContainer"] label,
+[data-testid="stAppViewContainer"] p,
+[data-testid="stAppViewContainer"] h1,
+[data-testid="stAppViewContainer"] h2,
+[data-testid="stAppViewContainer"] h3 {
+  color: #f8fafc !important;
+}
+/* Inputs */
+[data-testid="stAppViewContainer"] .stTextInput input,
+[data-testid="stAppViewContainer"] .stTextArea textarea,
+[data-testid="stAppViewContainer"] .stDateInput input,
+[data-testid="stAppViewContainer"] .stSelectbox div[role="combobox"] {
+  background: #0f172a !important;
+  color: #e5e7eb !important;
+  border: 1px solid #334155 !important;
+  border-radius: 10px !important;
+}
+/* Data editor / dataframe */
+[data-testid="stAppViewContainer"] [data-testid="stDataFrame"] .st-ag-theme [role="columnheader"] {
+  background: #0b1220 !important;
+  color: #e5e7eb !important;
+  border-bottom: 1px solid #1f2937 !important;
+}
+[data-testid="stAppViewContainer"] [data-testid="stDataFrame"] .st-ag-theme .ag-row {
+  background: #0f172a !important;
+  color: #e5e7eb !important;
+  border-bottom: 1px solid #1f2937 !important;
+}
+/* Buttons */
+[data-testid="stAppViewContainer"] .stButton>button {
+  background: #111827 !important;
+  color: #e5e7eb !important;
+  border: 1px solid #374151 !important;
+  border-radius: 10px !important;
+}
+[data-testid="stAppViewContainer"] .stButton>button:hover {
+  background: #1f2937 !important;
+}
