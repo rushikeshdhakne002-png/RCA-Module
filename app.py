@@ -141,25 +141,25 @@ if page == "Dashboard":
     if df.empty:
         st.info("No records yet. Add via **Issue Log** or **Import / Export**.")
     else:
-        # Derived fields
-      # Convert dates to timezone-aware then drop timezone for safe subtraction
+    # Derived fields
     df["_reported"] = pd.to_datetime(df["Reported Date"], utc=True).dt.tz_convert(None)
 
-# Today as naive midnight timestamp
+    # Today as naive midnight timestamp
     today = pd.Timestamp.today().normalize()
 
-# Age calculation (naive - naive)
+    # Age calculation (naive - naive)
     df["_age_days"] = (today - df["_reported"].dt.normalize()).dt.days.clip(lower=0)
 
-# Target completion date (also normalize tz)
+    # Target completion date (also normalize tz)
     target = pd.to_datetime(df["Target Completion Date"], errors="coerce", utc=True).dt.tz_convert(None)
 
-# SLA breach condition
+    # SLA breach condition
     df["_sla_breach"] = (
-    df["Status (Closed / Pending)"].eq("Pending")
-    & target.notna()
-    & (target.dt.normalize() < today)
+        df["Status (Closed / Pending)"].eq("Pending")
+        & target.notna()
+        & (target.dt.normalize() < today)
     )
+
 
 
         # KPIs
