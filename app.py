@@ -143,23 +143,23 @@ if page == "Dashboard":
     else:
         # Derived fields
       # Convert dates to timezone-aware then drop timezone for safe subtraction
-df["_reported"] = pd.to_datetime(df["Reported Date"], utc=True).dt.tz_convert(None)
+    df["_reported"] = pd.to_datetime(df["Reported Date"], utc=True).dt.tz_convert(None)
 
 # Today as naive midnight timestamp
-today = pd.Timestamp.today().normalize()
+    today = pd.Timestamp.today().normalize()
 
 # Age calculation (naive - naive)
-df["_age_days"] = (today - df["_reported"].dt.normalize()).dt.days.clip(lower=0)
+    df["_age_days"] = (today - df["_reported"].dt.normalize()).dt.days.clip(lower=0)
 
 # Target completion date (also normalize tz)
-target = pd.to_datetime(df["Target Completion Date"], errors="coerce", utc=True).dt.tz_convert(None)
+    target = pd.to_datetime(df["Target Completion Date"], errors="coerce", utc=True).dt.tz_convert(None)
 
 # SLA breach condition
-df["_sla_breach"] = (
+    df["_sla_breach"] = (
     df["Status (Closed / Pending)"].eq("Pending")
     & target.notna()
     & (target.dt.normalize() < today)
-)
+    )
 
 
         # KPIs
